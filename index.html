@@ -20,7 +20,7 @@
 
             <form>
                 <input type="text" placeholder="Saisir une ville" name="searchBar">
-                <input type="button" name="searchSubmit" value="Rechercher">
+                <input type="button" onClick="ajaxRequest()" name="searchSubmit" value="Rechercher">
             </form>
 
 
@@ -49,5 +49,6 @@
     position: absolute;
     bottom: 0;
     height: 50px;
+    border: 3px solid black;
 }
 </style>
