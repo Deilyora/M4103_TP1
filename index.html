@@ -3,9 +3,51 @@
     <head>
         <title>Application Météo</title>
         <meta charset="UTF-8">
+        <script type="text/javascript" src="script.js"></script>
     </head>
 
-    Hello world
+    <body id='app'>
+        <div>
+            <form id='menu'>
+                <input type="button" name="home" value="Accueil">
+                <input type="button" name="contact" value="Contact">
+                <input type="button" name="help" value="Aide">
+            </form>
 
-    
+            <br>
+            <br>
+            <br>
+
+            <form>
+                <input type="text" placeholder="Saisir une ville" name="searchBar">
+                <input type="button" name="searchSubmit" value="Rechercher">
+            </form>
+
+
+        </div>
+
+        <div>
+
+        </div>
+    </body>
+
+    <footer id='footer'>
+        Copyright 2019 SBB - ACG
+    </footer>
 </html>
+
+<style>
+#app {
+    margin-top: 5%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+#menu {
+    float: right;
+}
+#footer {
+    position: absolute;
+    bottom: 0;
+    height: 50px;
+}
+</style>
