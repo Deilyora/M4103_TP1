@@ -19,9 +19,11 @@ function ajaxRequest(){
     if(xhr.readyState == 4){
       if(xhr.status == 200){
         doc=JSON.parse(xhr.responseText);
+        console.log(doc);
         document.getElementById('ville').innerHTML = city;
         temp=Math.round(doc.main.temp-273);
         document.getElementById('temp').innerHTML = temp+" °C";
+        document.getElementById('tmps').src= "http://openweathermap.org/img/w/"+doc.weather[0].icon+".png"
         return doc;
       }
       else{
