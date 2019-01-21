@@ -1,10 +1,5 @@
 function ajaxRequest(){
-
-  var test=document.getElementById('test').innerHTML = 'dbhabdhjez';
-  console.log(test);
-
-  /*var xhr;
-  var doc="test";
+  var xhr;
   var city=document.getElementById('textField').value;
   if(window.XMLHttpRequest){
     xhr= new XMLHttpRequest();
@@ -24,10 +19,12 @@ function ajaxRequest(){
     if(xhr.readyState == 4){
       if(xhr.status == 200){
         doc=JSON.parse(xhr.responseText);
-
+        document.getElementById('ville').innerHTML = city;
+        console.log(doc);
+        temp=Math.round(doc.main.temp-273);
+        document.getElementById('temp').innerHTML = temp+" °C";
         return doc;
       }
     }
   }
-  */
 }
