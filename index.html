@@ -8,38 +8,73 @@
 </head>
 
 <body id='app'>
-    <div>
-        <form id='menu'>
-            <input type="button" name="home" value="Accueil">
-            <input type="button" name="contact" value="Contact">
-            <input type="button" name="help" value="Aide">
-        </form>
-
-        <br>
-        <br>
-        <br>
-
-            <p>
-              <input type="text" placeholder="Saisir une ville" name="searchBar" id="textField">
-              <input type="button" onClick="ajaxRequest()" name="searchSubmit" value="Rechercher">
-            </p>
-
-        <br>
-
-        <div>
-          <p>Météo du jour</p>
-          <p>Nom de la ville : <span id='ville'></span></p>
-          <p>Température : <span id='temp'></span></p>
-          <p>Temps :   <img src="" id="tmps" width="30" height="30"> 
+    <header id='header'>
+        Météo
+        <div id='menu'>
+            <input type="button" id="button" onClick="window.location='index.html'" name="home" value="Accueil">
+            <input type="button" id="button" onClick="window.location='maintenance.html'" name="contact" value="Contact">
+            <input type="button" id="button" onClick="window.location='maintenance.html'" name="help" value="Aide">
         </div>
+    </header>
 
-        <br>
-        <p id="error"></p>
+    <br>
+    <br>
+    <br>
 
+    <p>
+        <input type="text" placeholder="Saisir une ville" name="searchBar" id="textField">
+        <input type="button" onClick="ajaxRequest(false)" id="searchSubmit" value="Rechercher">
+    </p>
+
+    <br>
+
+    <div style="display: none" id="box">
+        <div onClick="ajaxRequest(true)" id='result'>
+            <!--
+            {"coord":{"lon":-2.76,"lat":47.66},
+            "weather":[{"id":800,"main":"Clear","description":"clear sky","icon":"01d"}],
+            "base":"stations","main":{"temp":279.49,"pressure":1006,"humidity":60,"temp_min":279.15,"temp_max":280.15},
+            "visibility":10000,
+            "wind":{"speed":4.6,"deg":350},
+            "clouds":{"all":0},
+            "dt":1548261000,
+            "sys":{"type":1,"id":6576,"message":0.0041,"country":"FR","sunrise":1548229667,"sunset":1548262721},
+            "id":2970777,
+            "name":"Vannes",
+            "cod":200}-->
+            <h2>Météo du jour</h2>
+            <p>Nom de la ville : <span id='ville'></span><span id='pays'></span><br>
+                Temps :   <img src="" id="tmps" width="20" height="20"><br>
+                Température : <span id='temp'></span><br>
+                <span id='pressure'></span><br>
+                <span id='humidity'></span><br>
+                <span id='visibility'></span><br>
+            </p>
+            <input type="button" id="more" value="Plus d'infos">
+        </div>
     </div>
+
+    <br>
+    <p id="error"></p>
+
+</div>
 </body>
 
 <footer id='footer'>
-    Copyright 2019 SBB - ACG
+    ©Copyright 2019 : Sami BEN BRAHIM - Allan CABILLIC-GUINEBAULT<br>
+    All Rights Reserved
 </footer>
 </html>
+
+<script>
+//Effectue la recherche avec la touche Entrée
+var input = document.getElementById('textField');
+
+input.addEventListener("keyup", function(event) {
+    event.preventDefault();
+    if (event.keyCode === 13) {
+
+        document.getElementById("searchSubmit").click();
+    }
+});
+</script>
