@@ -8,6 +8,7 @@
     background: #62a2ec;
     color: white;
     font-size: 30px;
+
 }
 #box {
     border: 1px solid black;
@@ -18,6 +19,9 @@
     margin-right: 5%;
     margin-bottom: 3%;
 }
+#search {
+    text-align: center;
+}
 #button {
     margin-left: 35px;
     background: none;
@@ -27,12 +31,6 @@
 }
 #menu {
     float: right;
-}
-#table {
-    border: 1px solid black;
-    width: 100%;
-    text-align: left;
-    font-weight: normal;
 }
 #footer {
     text-align: center;

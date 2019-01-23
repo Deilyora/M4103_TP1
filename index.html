@@ -21,7 +21,7 @@
     <br>
     <br>
 
-    <p>
+    <p id='search'>
         <input type="text" placeholder="Saisir une ville" name="searchBar" id="textField">
         <input type="button" onClick="ajaxRequest(false)" id="searchSubmit" value="Rechercher">
     </p>
@@ -44,11 +44,11 @@
             "cod":200}-->
             <h2>Météo du jour</h2>
             <p>Nom de la ville : <span id='ville'></span><span id='pays'></span><br>
-                Temps :   <img src="" id="tmps" width="20" height="20"><br>
-                Température : <span id='temp'></span><br>
-                <span id='pressure'></span><br>
-                <span id='humidity'></span><br>
-                <span id='visibility'></span><br>
+                Temps :   <img src="" id="tmps" width="30" height="30"><br><br>
+                Température : <span id='temp'></span>
+                <p><span id='pressure'></span></p>
+                <p><span id='humidity'></span></p>
+                <p><span id='visibility'></span></p>
             </p>
             <input type="button" id="more" value="Plus d'infos">
         </div>

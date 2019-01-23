@@ -52,20 +52,20 @@ function ajaxRequest(more){
                 document.getElementById('pays').innerHTML =  ", "+ doc.sys.country;
 
                 temp=Math.round(doc.main.temp-273);
-                document.getElementById('temp').innerHTML = temp+" °C";
+                document.getElementById('temp').innerHTML = temp+" °C <br>";
 
                 if(more == true) {
                     if(moreInfos == false) {
                         moreInfos = !moreInfos;
                         document.getElementById('more').value = "Moins d'infos";
                         //document.getElementById('result').parentNode.removeChild(document.getElementById('result'));
-                        document.getElementById('humidity').innerHTML = "Humidité : " + doc.main.humidity+" mm";
+                        document.getElementById('humidity').innerHTML = "Humidité : " + doc.main.humidity+" mm <br>";
                         document.getElementById('humidity').style.display == 'block';
 
-                        document.getElementById('visibility').innerHTML = "Visibilité : " + doc.visibility+" m";
+                        document.getElementById('visibility').innerHTML = "Visibilité : " + doc.visibility+" m <br>";
                         document.getElementById('visibility').style.display == 'block';
 
-                        document.getElementById('pressure').innerHTML = "Pression : " + doc.main.pressure+" hPa";
+                        document.getElementById('pressure').innerHTML = "Pression : " + doc.main.pressure+" hPa <br>";
                         document.getElementById('pressure').style.display == 'block';
                     }
                     else {
