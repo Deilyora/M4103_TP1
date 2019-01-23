@@ -21,19 +21,19 @@ function ajaxRequest(more){
         city = document.getElementById('ville').innerHTML;
     }
 
-/*
-<div onClick="ajaxRequest(true)" id='result'>
+    /*
+    <div onClick="ajaxRequest(true)" id='result'>
     <h2>Météo du jour</h2>
     <p>Nom de la ville : <span id='ville'></span><span id='pays'></span><br>
-        Temps :   <img src="" id="tmps" width="20" height="20"><br>
-        Température : <span id='temp'></span><br>
-        <span id='pressure'></span><br>
-        <span id='humidity'></span><br>
-        <span id='visibility'></span><br>
+    Temps :   <img src="" id="tmps" width="20" height="20"><br>
+    Température : <span id='temp'></span><br>
+    <span id='pressure'></span><br>
+    <span id='humidity'></span><br>
+    <span id='visibility'></span><br>
     </p>
     <input type="button" id="more" value="Plus d'infos">
-</div>
-*/
+    </div>
+    */
 
     xhr.open("GET", "http://api.openweathermap.org/data/2.5/weather?q="+city+"&APPID=ee07e2bf337034f905cde0bdedae3db8");
     xhr.send();
@@ -58,7 +58,39 @@ function ajaxRequest(more){
                     if(moreInfos == false) {
                         moreInfos = !moreInfos;
                         document.getElementById('more').value = "Moins d'infos";
-                        //document.getElementById('result').parentNode.removeChild(document.getElementById('result'));
+
+                        var sens;
+                        console.log(doc.wind.deg);
+                        switch(true) {
+                            case (doc.wind.deg >= 22.5 && doc.wind.deg <= 67.5):
+                                sens = "N-E";
+                                break;
+                            case (doc.wind.deg >= 67.5 && doc.wind.deg <= 112.5):
+                                sens = "E";
+                                break;
+                            case (doc.wind.deg >= 112.5 && doc.wind.deg <= 157.5):
+                                sens = "S-E";
+                                break;
+                            case (doc.wind.deg >= 157.5 && doc.wind.deg <= 202.5):
+                                sens = "S";
+                                break;
+                            case (doc.wind.deg >= 202.5 && doc.wind.deg <= 247.5):
+                                sens = "S-O";
+                                break;
+                            case (doc.wind.deg >= 247.5 && doc.wind.deg <= 292.5):
+                                sens = "O";
+                                break;
+                            case (doc.wind.deg >= 292.5 && doc.wind.deg <= 337):
+                                sens = "N-O";
+                                break;
+                            default:
+                                sens = 'N';
+                                break;
+                        }
+
+                        document.getElementById('wind').innerHTML = "Vent : " + doc.wind.speed+" m/s "+sens +" ("+doc.wind.deg+"°) <br>";
+                        document.getElementById('wind').style.display == 'block';
+
                         document.getElementById('humidity').innerHTML = "Humidité : " + doc.main.humidity+" mm <br>";
                         document.getElementById('humidity').style.display == 'block';
 
@@ -71,6 +103,9 @@ function ajaxRequest(more){
                     else {
                         moreInfos = !moreInfos;
                         document.getElementById('more').value = "Plus d'infos";
+                        document.getElementById('wind').innerHTML = null;
+                        document.getElementById('wind').style.display == 'none';
+
                         document.getElementById('humidity').innerHTML = null;
                         document.getElementById('humidity').style.display == 'none';
 
@@ -82,9 +117,18 @@ function ajaxRequest(more){
                     }
                 }
                 else {
-                    console.log("Oui");
+                    moreInfos = !moreInfos;
+                    document.getElementById('more').value = "Plus d'infos";
+                    document.getElementById('wind').innerHTML = null;
+                    document.getElementById('wind').style.display == 'none';
+
+                    document.getElementById('humidity').innerHTML = null;
                     document.getElementById('humidity').style.display == 'none';
+
+                    document.getElementById('visibility').innerHTML = null;
                     document.getElementById('visibility').style.display == 'none';
+
+                    document.getElementById('pressure').innerHTML = null;
                     document.getElementById('pressure').style.display == 'none';
                 }
 
@@ -93,7 +137,7 @@ function ajaxRequest(more){
             }
             else{
                 document.getElementById('box').style.display = 'none';
-                document.getElementById('error').innerHTML = 'Erreur, nom de ville incorrect.'
+                document.getElementById('error').innerHTML = 'Erreur, nom de ville incorrect. <br><br>'
             }
         }
     }
