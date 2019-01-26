@@ -44,6 +44,8 @@ function ajaxRequest(more){
                 console.log(doc);
 
                 //Vérifier si la grille est crée
+                document.getElementById('errorContainer').style.display = 'none';
+
                 if(document.getElementById('box').style.display == 'none') {
                     document.getElementById('box').style.display = 'block';
                 }
@@ -137,7 +139,10 @@ function ajaxRequest(more){
             }
             else{
                 document.getElementById('box').style.display = 'none';
-                document.getElementById('error').innerHTML = 'Erreur, nom de ville incorrect. <br><br>'
+
+                document.getElementById('errorContainer').style.display = 'block';
+                console.log(document.getElementById("error"));
+                document.getElementById('error').innerHTML = 'Erreur, nom de ville incorrect.'
             }
         }
     }

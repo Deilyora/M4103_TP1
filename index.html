@@ -3,7 +3,6 @@
 <head>
     <title>Application Météo</title>
     <meta charset="UTF-8">
-    <script type="text/javascript" src="main.js"></script>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -16,7 +15,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </head>
 
-<body id='app'>
+<body id='app' style='background: black'>
 
     <!-- Top -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" role="navigation">
@@ -50,14 +49,14 @@
     <!-- Recherche -->
     <div class='container'>
         <br><br>
-        <div style="background:transparent" class="jumbotron text-center">
+        <div style="background:transparent; color: white" class="jumbotron text-center">
             <br>
             <h2 class='display-5'>Consultez la météo de votre ville en direct</h2>
         </div>
 
         <p id='search'>
             <div class="form-row justify-content-center">
-                <div class="form-group col-sm-4">
+                <div class="form-group col-sm-5">
                     <div class="input-group center text-center" style='text-align: center;'>
                         <input type="text" class="form-control"
                         placeholder="Saisir une ville" name="searchBar" id="textField"
@@ -79,42 +78,54 @@
     <!-- Résultat -->
     <div style="display: none" id="box">
         <div class="form-row justify-content-center">
-            <div class="form-group col-md-10">
-                <div class="card" onClick="ajaxRequest(true)" id='result'>
-                    <h2>Météo du jour</h2>
-                    <p>Nom de la ville : <span id='ville'></span><span id='pays'></span><br>
-                        Temps :   <img src="" id="tmps" width="30" height="30"><br><br>
-                        Température : <span id='temp'></span>
-                        <p><span id='wind'></span></p>
-                        <p><span id='pressure'></span></p>
-                        <p><span id='humidity'></span></p>
-                        <p><span id='visibility'></span></p>
-                    </p>
-                    <input type="button" id="more" value="Plus d'infos">
+            <div class="form-group col-md-8">
+
+                <div class="card" onClick="ajaxRequest(true)" id='result' style='background: white'>
+                    <div class='container'>
+                        <h2>Météo du jour</h2>
+                        <p>Nom de la ville : <span id='ville'></span><span id='pays'></span><br>
+                            Temps :   <img src="" id="tmps" width="30" height="30"><br><br>
+                            Température : <span id='temp'></span>
+                            <p><span id='wind'></span></p>
+                            <p><span id='pressure'></span></p>
+                            <p><span id='humidity'></span></p>
+                            <p><span id='visibility'></span></p>
+                        </p>
+                        <input type="button" id="more" value="Plus d'infos">
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>
     <!-- Résultat -->
 
     <!-- Erreur -->
-    <p id="error"></p>
+    <div style="display: none" id='errorContainer'>
+        <div class="form-row justify-content-center">
+            <div class="form-group col-md-3">
+
+                <div class="alert alert-danger" role="alert">
+                        <p id='error'></p>
+                </div>
+
+            </div>
+        </div>
+    </div>
     <!-- Erreur -->
 
 </body>
 
 <!-- Footer -->
 <footer class="page-footer text-muted bg-dark footer-position">
-
     <div class="copyright-footer text-center py-3">
         © Copyright 2019 : Sami BEN BRAHIM - Allan CABILLIC-GUINEBAULT / All Rights Reserved
     </div>
-
 </footer>
 <!-- Footer -->
 
 </html>
-
+<script type="text/javascript" src="main.js"></script>
 <script>
 //Effectue la recherche avec la touche Entrée
 var input = document.getElementById('textField');
