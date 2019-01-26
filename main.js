@@ -1,4 +1,4 @@
-var moreInfos = false;
+var moreInfos = true;
 
 
 function ajaxRequest(more){

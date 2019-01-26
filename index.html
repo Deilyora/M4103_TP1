@@ -4,27 +4,74 @@
     <title>Application Météo</title>
     <meta charset="UTF-8">
     <script type="text/javascript" src="main.js"></script>
-    <link rel="stylesheet" type="text/css" href="theme.css">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </head>
 
 <body id='app'>
-    <header id='header'>
-        Météo
-        <div id='menu'>
-            <input type="button" id="button" onClick="window.location='index.html'" name="home" value="Accueil">
-            <input type="button" id="button" onClick="window.location='maintenance.html'" name="contact" value="Contact">
-            <input type="button" id="button" onClick="window.location='maintenance.html'" name="help" value="Aide">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" role="navigation">
+        <a class="navbar-brand" href="#">Application Météo</a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <!-- Bouton à gauche -->
+            </ul>
+
+            <ul class="navbar-nav">
+                <!-- Bouton à droite -->
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Accueil <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Aide</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
         </div>
-    </header>
+    </nav>
 
-    <br>
-    <h2 id='h2'>Consultez la météo de votre ville en direct</h2>
-    <br>
+    <div class='container'>
+        <div style="background:transparent" class="jumbotron text-center">
+            <br>
+            <h2 class='display-5'>Consultez la météo de votre ville en direct</h2>
+        </div>
 
-    <p id='search'>
-        <input type="text" placeholder="Saisir une ville" name="searchBar" id="textField">
-        <input type="button" onClick="ajaxRequest(false)" id="searchSubmit" value="Rechercher">
-    </p>
+        <p id='search'>
+            <div class="form-row justify-content-center">
+                <div class="form-group col-sm-4">
+                    <div class="input-group center text-center" style='text-align: center;'>
+                        <input type="text" class="form-control"
+                        placeholder="Saisir une ville" name="searchBar" id="textField"
+                        aria-label="Example text with button addon" aria-describedby="button-addon1">
+
+                        <div class="input-group-prepend">
+                            <button class="btn btn-outline-secondary" type="button"
+                            onClick="ajaxRequest(false)" id="searchSubmit"
+                            value="Rechercher">Rechercher</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </p>
+    </div>
+
+
+
 
     <br>
 
@@ -62,7 +109,7 @@
 </body>
 
 <footer id='footer'>
-    ©Copyright 2019 : Sami BEN BRAHIM - Allan CABILLIC-GUINEBAULT<br>
+    © Copyright 2019 : Sami BEN BRAHIM - Allan CABILLIC-GUINEBAULT<br>
     All Rights Reserved
     <br>
 </footer>
