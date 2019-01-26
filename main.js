@@ -18,22 +18,8 @@ function ajaxRequest(more){
 
     var city = document.getElementById('textField').value;
     if(more == true) {
-        city = document.getElementById('ville').innerHTML;
+        city = document.getElementById('ville').innerHTML + document.getElementById('pays').innerHTML;
     }
-
-    /*
-    <div onClick="ajaxRequest(true)" id='result'>
-    <h2>Météo du jour</h2>
-    <p>Nom de la ville : <span id='ville'></span><span id='pays'></span><br>
-    Temps :   <img src="" id="tmps" width="20" height="20"><br>
-    Température : <span id='temp'></span><br>
-    <span id='pressure'></span><br>
-    <span id='humidity'></span><br>
-    <span id='visibility'></span><br>
-    </p>
-    <input type="button" id="more" value="Plus d'infos">
-    </div>
-    */
 
     xhr.open("GET", "http://api.openweathermap.org/data/2.5/weather?q="+city+"&APPID=ee07e2bf337034f905cde0bdedae3db8");
     xhr.send();
@@ -52,17 +38,18 @@ function ajaxRequest(more){
 
                 document.getElementById('ville').innerHTML = doc.name;
                 document.getElementById('pays').innerHTML =  ", "+ doc.sys.country;
-
                 temp=Math.round(doc.main.temp-273);
                 document.getElementById('temp').innerHTML = temp+" °C <br>";
 
+                document.getElementById('tmps').src= "http://openweathermap.org/img/w/"+doc.weather[0].icon+".png"
+
+                //Plus d'infos
                 if(more == true) {
                     if(moreInfos == false) {
                         moreInfos = !moreInfos;
                         document.getElementById('more').value = "Moins d'infos";
 
                         var sens;
-                        console.log(doc.wind.deg);
                         switch(true) {
                             case (doc.wind.deg >= 22.5 && doc.wind.deg <= 67.5):
                                 sens = "N-E";
@@ -101,10 +88,13 @@ function ajaxRequest(more){
 
                         document.getElementById('pressure').innerHTML = "Pression : " + doc.main.pressure+" hPa <br>";
                         document.getElementById('pressure').style.display == 'block';
+
+                        $('collapseInfos').collapse('show');
                     }
                     else {
                         moreInfos = !moreInfos;
                         document.getElementById('more').value = "Plus d'infos";
+
                         document.getElementById('wind').innerHTML = null;
                         document.getElementById('wind').style.display == 'none';
 
@@ -116,11 +106,15 @@ function ajaxRequest(more){
 
                         document.getElementById('pressure').innerHTML = null;
                         document.getElementById('pressure').style.display == 'none';
+
+
+                        $('collapseInfos').collapse('hide');
                     }
                 }
                 else {
                     moreInfos = !moreInfos;
                     document.getElementById('more').value = "Plus d'infos";
+
                     document.getElementById('wind').innerHTML = null;
                     document.getElementById('wind').style.display == 'none';
 
@@ -132,16 +126,17 @@ function ajaxRequest(more){
 
                     document.getElementById('pressure').innerHTML = null;
                     document.getElementById('pressure').style.display == 'none';
+
+
+                    $('collapseInfos').collapse('hide');
                 }
 
-                document.getElementById('tmps').src= "http://openweathermap.org/img/w/"+doc.weather[0].icon+".png"
                 return doc;
             }
             else{
                 document.getElementById('box').style.display = 'none';
 
                 document.getElementById('errorContainer').style.display = 'block';
-                console.log(document.getElementById("error"));
                 document.getElementById('error').innerHTML = 'Erreur, nom de ville incorrect.'
             }
         }
