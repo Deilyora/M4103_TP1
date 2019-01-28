@@ -9,119 +9,130 @@
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </head>
 
 <body id='app' style='background: url(public/background.jpg) fixed;'>
 
-        <!-- Top -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" role="navigation">
-            <a class="navbar-brand" href="#">Application Météo</a>
+    <!-- Top -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark" role="navigation">
+        <a class="navbar-brand" href="#">Application Météo</a>
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <!-- Bouton à gauche -->
-                </ul>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <!-- Bouton à gauche -->
+            </ul>
 
-                <ul class="navbar-nav">
-                    <!-- Bouton à droite -->
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Accueil <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="aide.html">Aide</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        <!-- Top -->
+            <ul class="navbar-nav">
+                <!-- Bouton à droite -->
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Accueil <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="aide.html">Aide</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Top -->
 
-        <!-- Recherche -->
-        <div class='container'>
-            <br><br>
-            <div style="background:transparent; color: black" class="jumbotron text-center">
-                <br>
-                <h2 class='display-5'>Consultez la météo de votre ville en direct</h2>
-            </div>
+    <!-- Recherche -->
+    <div class='container'>
+        <br><br>
+        <div style="background:transparent; color: black" class="jumbotron text-center">
+            <br>
+            <h2 class='display-5'>Consultez la météo de votre ville en direct</h2>
+        </div>
 
-            <p id='search'>
-                <div class="form-row justify-content-center">
-                    <div class="form-group col-sm-5">
-                        <div class="input-group center text-center" style='text-align: center;'>
-                            <input type="text" class="form-control"
-                            placeholder="Saisir une ville" name="searchBar" id="textField"
-                            aria-label="Example text with button addon" aria-describedby="button-addon1">
+        <p id='search'>
+            <div class="form-row justify-content-center">
+                <div class="form-group col-sm-5">
+                    <div class="input-group center text-center" style='text-align: center;'>
+                        <input type="text" class="form-control"
+                        placeholder="Saisir une ville" name="searchBar" id="textField"
+                        aria-label="Example text with button addon" aria-describedby="button-addon1">
 
-                            <div class="input-group-prepend">
-                                <button class="btn btn-outline" type="button"
-                                onClick="ajaxRequest(false)" id="searchSubmit"
-                                value="Rechercher">Rechercher</button>
-                            </div>
+                        <div class="input-group-prepend">
+                            <button class="btn btn-outline" type="button"
+                            onClick="ajaxRequest(false)" id="searchSubmit"
+                            value="Rechercher">Rechercher</button>
                         </div>
                     </div>
                 </div>
-            </p>
-        </div>
-        <!-- Recherche -->
+            </div>
+        </p>
+    </div>
+    <!-- Recherche -->
 
-        <br>
-        <!-- Résultat -->
-        <div style="display: none" id="box">
-            <div class="form-row justify-content-center" style='max-width:100%'>
-                <div class="form-group col-md-8">
+    <br>
+    <!-- Résultat -->
+    <div style="display: none" id="box">
+        <div class="form-row justify-content-center" style='max-width:100%'>
+            <div class="form-group col-md-8">
 
-                    <div class="card" onClick="ajaxRequest(true)" id='result' style='background: white'>
-                        <div class="card-body">
-                            <h2 class="card-title text-center" >Météo du jour</h2>
-                            <p class="card-text">Nom de la ville : <span id='ville'></span><span id='pays'></span><br>
-                                Temps :   <img src="" id="tmps" width="30" height="30"><br>
-                                Température : <span id='temp'></span>
+                <div class="card" onClick="ajaxRequest(true)" id='result' style='background: white; opacity: 0.95;'>
 
-                                <p>
-                                    <span id='wind'></span>
-                                    <span id='pressure'></span>
-                                    <span id='humidity'></span>
-                                    <span id='visibility'></span>
-                                </p>
+                    <div class="card-body">
+                        <h2 class="card-title text-center">Météo du jour — <span id='ville'></span><span id='pays'></span></h2><br>
+                        <p class="card-text">
+                            <div class="row">
+                                <div class="col-sm">
+                                    Temps :   <br>
+                                    <img src="" id="tmps" width="60" height="60">        <span id='dehors'></span><br>
+                                    <p>
+                                        <span id='wind'></span>
+                                        <span id='pressure'></span>
+                                        <span id='humidity'></span>
+                                        <span id='visibility'></span>
+                                    </p>
+                                </div>
+
+                                <div class="col-xs">
+
+                                </div>
+
+                                <div class="col-sm">
+                                    Température : <span id='temp'></span>
+                                </div>
 
                             </p>
-                            <input class="btn btn-secondary" type="button" id="more" value="Plus d'infos">
-
                         </div>
-                    </div>
+                        <input class="btn btn-secondary" type="button" id="more" value="Plus d'infos">
 
+                    </div>
                 </div>
+
             </div>
         </div>
-        <!-- Résultat -->
+    </div>
+    <!-- Résultat -->
 
-        <!-- Erreur -->
-        <div style="display: none" id='errorContainer'>
-            <div class="form-row justify-content-center" style='max-width:100%'>
-                <div class="form-group col-md-3">
+    <!-- Erreur -->
+    <div style="display: none" id='errorContainer'>
+        <div class="form-row justify-content-center" style='max-width:100%'>
+            <div class="form-group col-md-3">
 
-                    <div class="alert alert-danger" role="alert">
-                        <span id='error'></span>
-                    </div>
-
+                <div class="alert alert-danger" role="alert">
+                    <span id='error'></span>
                 </div>
+
             </div>
         </div>
-        <!-- Erreur -->
-        
+    </div>
+    <!-- Erreur -->
+
+    <br><br><br><br><br><br>
+
 </body>
 
 <!-- Footer -->
-<footer class="page-footer text-muted bg-dark footer-position">
+<footer class="page-footer text-muted bg-dark fixed-bottom footer-position">
     <div class="copyright-footer text-center py-3">
         © Copyright 2019 : Sami BEN BRAHIM - Allan CABILLIC-GUINEBAULT / All Rights Reserved
     </div>
@@ -129,7 +140,12 @@
 <!-- Footer -->
 
 </html>
+
 <script type="text/javascript" src="main.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
 <script>
 //Effectue la recherche avec la touche Entrée
 var input = document.getElementById('textField');
@@ -141,5 +157,4 @@ input.addEventListener("keyup", function(event) {
         document.getElementById("searchSubmit").click();
     }
 });
-
 </script>
