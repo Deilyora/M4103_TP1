@@ -46,14 +46,14 @@
     </nav>
     <!-- Top -->
 
-    <!-- Recherche -->
+
     <div class='container' style="min-height: 450px">
         <br><br>
+        <!-- Recherche -->
         <div style="background:transparent; color: black" class="jumbotron text-center">
             <br>
             <h2 class='display-5 text-white'>Consultez la météo de votre ville en direct</h2>
         </div>
-
         <p id='search'>
             <div class="form-row justify-content-center">
                 <div class="form-group col-sm-5">
@@ -78,7 +78,7 @@
             <div class="form-row justify-content-center" style='max-width:100%'>
                 <div class="form-group col-md-8">
 
-                    <div class="card" onClick="ajaxRequest(true)" id='result' style='background: white; opacity: 0.95;'>
+                    <div class="card" id='result' style='background: white; opacity: 0.95;'>
 
                         <div class="card-body">
                             <h2 class="card-title text-center">Météo du jour — <span id='ville'></span><span id='pays'></span></h2><br>
@@ -89,12 +89,11 @@
                                         <img src="" id="tmps" width="60" height="60">        <span id='dehors'></span><br>
                                     </div>
 
-                                    <div class="col-xs">
-
-                                    </div>
+                                    <div class="col-xs"></div>
 
                                     <div class="col-sm">
                                         Température : <span id='temp'></span>
+                                        <span id='pressure'></span>
                                     </div>
 
                                 </p>
@@ -103,13 +102,21 @@
                                 <div class="col-sm">
                                     <p>
                                         <span id='wind'></span>
-                                        <span id='pressure'></span>
+                                        <span id='clouds'></span>
                                         <span id='humidity'></span>
                                         <span id='visibility'></span>
                                     </p>
                                 </div>
+                                <div class="col-xs"></div>
+                                <div class="col-sm">
+                                    <p>
+                                        <span id='sunrise'></span>
+                                        <span id='sunset'></span>
+                                        <span id='coords'></span>
+                                    </p>
+                                </div>
                             </div>
-                            <input class="btn btn-secondary" type="button" id="more" value="Plus d'infos">
+                            <input class="btn btn-secondary" type="button" onClick="ajaxRequest(true)" id="more" value="Plus d'infos">
 
                         </div>
                     </div>
@@ -146,12 +153,12 @@
                     <p>
 
                         Pour avoir tous les données métérologiques d'une ville dans le monde, il suffit d'entrer le nom de celle-ci et d'appuyer sur 'Rechercher'
-                        Les informations apparaîtront au bas de la barre de recherche
-
-                        La liste des stations est fournie par l'API OpenWeatherStation
-
-                        Pour plus d'informations, visitez <a href=""/>
-
+                        Les informations apparaîtront au bas de la barre de recherche<br>
+                        <br>
+                        La liste des stations est fournie par l'API OpenWeatherMap<br>
+                        <br>
+                        Pour plus d'informations, visitez <a href="https://openweathermap.org/guide" target='_blank'>https://openweathermap.org/</a>
+                        <br>
                     </p>
                 </div>
             </div>
@@ -166,7 +173,9 @@
                     <h2 class="text-center">Contact</h2><br>
                     <p>
 
-                        Yes
+                        Un problème ? N'hésitez pas à nous contacter sur cette adresse : <br>
+                        <br>
+                        <a href="http://www.iutvannes.fr/" target='_blank'>application-web.meteo@m4104c.com</a>
 
                     </p>
                 </div>

@@ -38,15 +38,13 @@ function ajaxRequest(more){
 
                 document.getElementById('ville').innerHTML = doc.name;
                 document.getElementById('pays').innerHTML =  ", "+ doc.sys.country;
-                temp=Math.round((doc.main.temp-273) * 100) / 100;
+                temp = Math.round((doc.main.temp-273) * 10) / 10;
                 document.getElementById('temp').innerHTML = temp+" °C <br>";
 
                 document.getElementById('tmps').src= "http://openweathermap.org/img/w/"+doc.weather[0].icon+".png";
+                document.getElementById('dehors').innerHTML = doc.weather[0].description;
 
-                
-                }
-
-                document.getElementById('dehors').innerHTML = dehors;
+                document.getElementById('pressure').innerHTML = "Pression : " + doc.main.pressure+" hPa <br>";
 
                 //Plus d'infos
                 if(more == true) {
@@ -57,29 +55,29 @@ function ajaxRequest(more){
                         var sens;
                         switch(true) {
                             case (doc.wind.deg >= 22.5 && doc.wind.deg <= 67.5):
-                                sens = "N-E";
-                                break;
+                            sens = "N-E";
+                            break;
                             case (doc.wind.deg >= 67.5 && doc.wind.deg <= 112.5):
-                                sens = "E";
-                                break;
+                            sens = "E";
+                            break;
                             case (doc.wind.deg >= 112.5 && doc.wind.deg <= 157.5):
-                                sens = "S-E";
-                                break;
+                            sens = "S-E";
+                            break;
                             case (doc.wind.deg >= 157.5 && doc.wind.deg <= 202.5):
-                                sens = "S";
-                                break;
+                            sens = "S";
+                            break;
                             case (doc.wind.deg >= 202.5 && doc.wind.deg <= 247.5):
-                                sens = "S-O";
-                                break;
+                            sens = "S-O";
+                            break;
                             case (doc.wind.deg >= 247.5 && doc.wind.deg <= 292.5):
-                                sens = "O";
-                                break;
+                            sens = "O";
+                            break;
                             case (doc.wind.deg >= 292.5 && doc.wind.deg <= 337):
-                                sens = "N-O";
-                                break;
+                            sens = "N-O";
+                            break;
                             default:
-                                sens = 'N';
-                                break;
+                            sens = 'N';
+                            break;
                         }
 
                         document.getElementById('wind').innerHTML = "Vent : " + doc.wind.speed+" m/s "+sens +" ("+doc.wind.deg+"°) <br>";
@@ -91,10 +89,30 @@ function ajaxRequest(more){
                         document.getElementById('visibility').innerHTML = "Visibilité : " + doc.visibility+" m <br>";
                         document.getElementById('visibility').style.display == 'block';
 
-                        document.getElementById('pressure').innerHTML = "Pression : " + doc.main.pressure+" hPa <br>";
-                        document.getElementById('pressure').style.display == 'block';
+                        document.getElementById('visibility').innerHTML = "Nébulosité : " + doc.clouds.all+" % <br>";
+                        document.getElementById('visibility').style.display == 'block';
 
-                        $('collapseInfos').collapse('show');
+
+                        var dateRise = new Date(doc.sys.sunrise*1000);
+                        var hoursR = dateRise.getHours();
+                        var minutesR = "0" + dateRise.getMinutes();
+
+                        var tempsRise = hoursR + ':' + minutesR.substr(-2);
+
+                        document.getElementById('sunrise').innerHTML = "Lever du soleil : " + tempsRise +" <br>";
+                        document.getElementById('sunrise').style.display == 'block';
+
+                        var dateSet = new Date(doc.sys.sunset*1000);
+                        var hoursS = dateSet.getHours();
+                        var minutesS = "0" + dateSet.getMinutes();
+
+                        var tempsSet = hoursS + ':' + minutesS.substr(-2);
+
+                        document.getElementById('sunset').innerHTML = "Coucher du soleil : " + tempsSet +" <br>";
+                        document.getElementById('sunset').style.display == 'block';
+
+                        document.getElementById('coords').innerHTML = "Coordonnées : <a href='https://openweathermap.org/weathermap?basemap=map&cities=true&layer=temperature&lat="+doc.coord.lat+"&lon="+doc.coord.lon+"&zoom=13' target='_blank'>["+doc.coord.lat+", "+doc.coord.lon+"] </a>  <br>";
+                        document.getElementById('coords').style.display == 'block';
                     }
                     else {
                         moreInfos = !moreInfos;
@@ -109,11 +127,17 @@ function ajaxRequest(more){
                         document.getElementById('visibility').innerHTML = null;
                         document.getElementById('visibility').style.display == 'none';
 
-                        document.getElementById('pressure').innerHTML = null;
-                        document.getElementById('pressure').style.display == 'none';
+                        document.getElementById('visibility').innerHTML = null;
+                        document.getElementById('visibility').style.display == 'none';
 
+                        document.getElementById('sunrise').innerHTML = null;
+                        document.getElementById('sunrise').style.display == 'none';
 
-                        $('collapseInfos').collapse('hide');
+                        document.getElementById('sunset').innerHTML = null;
+                        document.getElementById('sunset').style.display == 'none';
+
+                        document.getElementById('coords').innerHTML = null;
+                        document.getElementById('coords').style.display == 'none';
                     }
                 }
                 else {
@@ -129,11 +153,17 @@ function ajaxRequest(more){
                     document.getElementById('visibility').innerHTML = null;
                     document.getElementById('visibility').style.display == 'none';
 
-                    document.getElementById('pressure').innerHTML = null;
-                    document.getElementById('pressure').style.display == 'none';
+                    document.getElementById('visibility').innerHTML = null;
+                    document.getElementById('visibility').style.display == 'none';
 
+                    document.getElementById('sunrise').innerHTML = null;
+                    document.getElementById('sunrise').style.display == 'none';
 
-                    $('collapseInfos').collapse('hide');
+                    document.getElementById('sunset').innerHTML = null;
+                    document.getElementById('sunset').style.display == 'none';
+
+                    document.getElementById('coords').innerHTML = null;
+                    document.getElementById('coords').style.display == 'none';
                 }
 
                 return doc;
