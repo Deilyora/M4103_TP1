@@ -38,86 +38,12 @@ function ajaxRequest(more){
 
                 document.getElementById('ville').innerHTML = doc.name;
                 document.getElementById('pays').innerHTML =  ", "+ doc.sys.country;
-                temp=Math.round(doc.main.temp-273);
+                temp=Math.round((doc.main.temp-273) * 100) / 100;
                 document.getElementById('temp').innerHTML = temp+" °C <br>";
 
                 document.getElementById('tmps').src= "http://openweathermap.org/img/w/"+doc.weather[0].icon+".png";
 
-                var dehors;
-                switch(true) {
-                    case (doc.weather[0].id == 200):
-                        dehors = "Orage avec légère pluie";
-                        break;
-                    case (doc.weather[0].id == 201):
-                        dehors = "Orage avec pluie";
-                        break;
-                    case (doc.weather[0].id == 202):
-                        dehors = "Orage avec forte pluie";
-                        break;
-                    case (doc.weather[0].id == 210):
-                        dehors = "Orage léger";
-                        break;
-                    case (doc.weather[0].id == 211):
-                        dehors = "Orage";
-                        break;
-                    case (doc.weather[0].id == 212):
-                        dehors = "Orage fort";
-                        break;
-                    case (doc.weather[0].id == 221):
-                        dehors = "Orage déchainé";
-                        break;
-                    default:
-                        dehors = doc.weather[0].description;
-                        break;
-                    /*
-                    230	thunderstorm with light drizzle	 11d
-                    231	thunderstorm with drizzle	 11d
-                    232	thunderstorm with heavy drizzle	 11d
-                    300	light intensity drizzle	 09d
-                    301	drizzle	 09d
-                    302	heavy intensity drizzle	 09d
-                    310	light intensity drizzle rain	 09d
-                    311	drizzle rain	 09d
-                    312	heavy intensity drizzle rain	 09d
-                    313	shower rain and drizzle	 09d
-                    314	heavy shower rain and drizzle	 09d
-                    321	shower drizzle	 09d
-                    500	light rain	 10d
-                    501	moderate rain	 10d
-                    502	heavy intensity rain	 10d
-                    503	very heavy rain	 10d
-                    504	extreme rain	 10d
-                    511	freezing rain	 13d
-                    520	light intensity shower rain	 09d
-                    521	shower rain	 09d
-                    522	heavy intensity shower rain	 09d
-                    531	ragged shower rain	 09d
-                    600	light snow	 13d
-                    601	snow	 13d
-                    602	heavy snow	 13d
-                    611	sleet	 13d
-                    612	shower sleet	 13d
-                    615	light rain and snow	 13d
-                    616	rain and snow	 13d
-                    620	light shower snow	 13d
-                    621	shower snow	 13d
-                    622	heavy shower snow	 13d
-                    701	mist	 50d
-                    711	smoke	 50d
-                    721	haze	 50d
-                    731	sand, dust whirls	 50d
-                    741	fog	 50d
-                    751	sand	 50d
-                    761	dust	 50d
-                    762	volcanic ash	 50d
-                    771	squalls	 50d
-                    781	tornado	 50d
-                    800	clear sky	 01d  01n
-                    801	few clouds	 02d  02n
-                    802	scattered clouds	 03d  03n
-                    803	broken clouds	 04d  04n
-                    804	overcast clouds
-                    */
+                
                 }
 
                 document.getElementById('dehors').innerHTML = dehors;
